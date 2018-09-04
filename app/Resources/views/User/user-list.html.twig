@@ -15,27 +15,17 @@
             <table class="table table-hover table-sm">
                 <thead>
                 <tr>
-                    <th{% if pagination.isSorted('nome') %} class="sorted {{ pagination.getDirection() }}"{% endif %}>{{ knp_pagination_sortable(pagination, 'Nome', 'nome') }}</th>
-                    <th>Email</th>
-                    <th{% if pagination.isSorted('ospedale.nome') %} class="sorted {{ pagination.getDirection() }}"{% endif %}>{{ knp_pagination_sortable(pagination, 'Ospedale', 'ospedale.nome') }}</th>
-                    <th>Telefono</th>
-                    <th>Cellulare</th>
+                    <th{% if pagination.isSorted('firstName') %} class="sorted {{ pagination.getDirection() }}"{% endif %}>{{ knp_pagination_sortable(pagination, 'First name', 'firstName') }}</th>
+                    <th{% if pagination.isSorted('structure.name') %} class="sorted {{ pagination.getDirection() }}"{% endif %}>{{ knp_pagination_sortable(pagination, 'Structure', 'structure.name') }}</th>
                 </tr>
                 </thead>
                 <tbody>
-                {# @var user \GreenClick\AppBundle\Entity\WorkPhase #}
+                {# @var user \AppBundle\Entity\User #}
                 {% for user in pagination %}
-                    {% set ospedale = user.ospedale %}
+                    {% set structure = user.structure %}
                     <tr data-user="{{ user.id }}">
-                        <td>{{ loop.index }}</td>
-                        <td>
-                            {#<a href="{{ path('modifica_user',{id: user.getId() }) }}">{{ user.nome }}</a>#}
-                            {{ user }}
-                        </td>
-                        <td>{{ user.email }}</td>
-                        <td>{{ ospedale ? ospedale : '-' }}</td>
-                        <td>{{ user.telefono }}</td>
-                        <td>{{ user.cellulare }}</td>
+                        <td>{{ user.firstName }}</td>
+                        <td>{{ structure ? structure : '-' }}</td>
                     </tr>
                 {% endfor %}
                 </tbody>

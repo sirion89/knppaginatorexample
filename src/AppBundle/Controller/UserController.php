@@ -10,25 +10,25 @@ use Symfony\Component\HttpFoundation\Response;
 
 /**
  * Class UserController
- * @Route("/user")
+ * @Route("/")
  * @package AppBundle\Controller
  */
 class UserController extends Controller {
 	
 	/**
 	 * @param Request $request
-	 * @Route("/lista", name="lista_registrati")
+	 * @Route("/", name="users_list")
 	 *
 	 * @return Response
 	 */
 	public function listAction( Request $request ) {
-		$users = $this->getDoctrine()->getManager()->getRepository( "MovigroupCongressiAppBundle:User" )->findAll();
+		$users = $this->getDoctrine()->getManager()->getRepository( "AppBundle:User" )->findAll();
 		
 		$paginator  = $this->get( "knp_paginator" );
 		$pagination = $paginator->paginate(
 			$users,
 			$request->query->getInt( 'page', 1 ),
-			$this->getParameter( "default_paginations_items" )
+			30
 		);
 		
 		return $this->render( "User/user-list.html.twig", array(
