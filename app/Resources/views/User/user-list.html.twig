@@ -1,0 +1,50 @@
+{% extends "base.html.twig" %}
+
+{% set pageTitle = "Users" %}
+{% block title %}{{ pageTitle }}{% endblock %}
+
+{% block body %}
+    {# @var pagination \Knp\Bundle\PaginatorBundle\Pagination\SlidingPagination #}
+    <div id="page-user-list">
+        {% if pagination.getTotalItemCount > 0 %}
+            <div class="count">
+                Total {{ pageTitle }}: {{ pagination.getTotalItemCount }}
+            </div>
+
+
+            <table class="table table-hover table-sm">
+                <thead>
+                <tr>
+                    <th{% if pagination.isSorted('nome') %} class="sorted {{ pagination.getDirection() }}"{% endif %}>{{ knp_pagination_sortable(pagination, 'Nome', 'nome') }}</th>
+                    <th>Email</th>
+                    <th{% if pagination.isSorted('ospedale.nome') %} class="sorted {{ pagination.getDirection() }}"{% endif %}>{{ knp_pagination_sortable(pagination, 'Ospedale', 'ospedale.nome') }}</th>
+                    <th>Telefono</th>
+                    <th>Cellulare</th>
+                </tr>
+                </thead>
+                <tbody>
+                {# @var user \GreenClick\AppBundle\Entity\WorkPhase #}
+                {% for user in pagination %}
+                    {% set ospedale = user.ospedale %}
+                    <tr data-user="{{ user.id }}">
+                        <td>{{ loop.index }}</td>
+                        <td>
+                            {#<a href="{{ path('modifica_user',{id: user.getId() }) }}">{{ user.nome }}</a>#}
+                            {{ user }}
+                        </td>
+                        <td>{{ user.email }}</td>
+                        <td>{{ ospedale ? ospedale : '-' }}</td>
+                        <td>{{ user.telefono }}</td>
+                        <td>{{ user.cellulare }}</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+            <div class="navigation">
+                {{ knp_pagination_render(pagination) }}
+            </div>
+        {% else %}
+            <div class="no-results-found">No results</div>
+        {% endif %}
+    </div>
+{% endblock %}
