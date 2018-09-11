@@ -55,7 +55,7 @@ class Structure {
 	}
 	
 	public function __toString() {
-		return (string) $this->getName();
+		return $this->getName();
 	}
 
     /**

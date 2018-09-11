@@ -16,7 +16,7 @@
                 <thead>
                 <tr>
                     <th{% if pagination.isSorted('firstName') %} class="sorted {{ pagination.getDirection() }}"{% endif %}>{{ knp_pagination_sortable(pagination, 'First name', 'firstName') }}</th>
-                    <th{% if pagination.isSorted('structure') %} class="sorted {{ pagination.getDirection() }}"{% endif %}>{{ knp_pagination_sortable(pagination, 'Structure', 'structure') }}</th>
+                    <th{% if pagination.isSorted('structure.name') %} class="sorted {{ pagination.getDirection() }}"{% endif %}>{{ knp_pagination_sortable(pagination, 'Structure', 'structure.name') }}</th>
                 </tr>
                 </thead>
                 <tbody>
