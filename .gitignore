@@ -1,54 +1,22 @@
-/.web-server-pid
-/app/config/parameters.yml
-/build/
-/phpunit.xml
-/var/*
-!/var/cache
-/var/cache/*
+app/config/parameters.yml
+
+.env
+
+phpunit.xml
+
+var/bootstrap.php.cache
+var/cache/*
 !var/cache/.gitkeep
-!/var/logs
-/var/logs/*
+var/logs/*
 !var/logs/.gitkeep
-!/var/sessions
-/var/sessions/*
+var/sessions/*
 !var/sessions/.gitkeep
 !var/SymfonyRequirements.php
-/web/bundles/
-### macOS template
-*.DS_Store
-.AppleDouble
-.LSOverride
-
-# Icon must end with two \r
-Icon
-
-
-# Thumbnails
-._*
-
-# Files that might appear in the root of a volume
-.DocumentRevisions-V100
-.fseventsd
-.Spotlight-V100
-.TemporaryItems
-.Trashes
-.VolumeIcon.icns
-.com.apple.timemachine.donotpresent
-
-# Directories potentially created on remote AFP share
-.AppleDB
-.AppleDesktop
-Network Trash Folder
-Temporary Items
-.apdisk
-.idea/
-/node_modules/
-/web/fonts/
-/web/css/
-/web/js/
-/temp/
-/css/
-test.html
-/composer.lock
 
 vendor/*
+
+web/bundles/
+web/fonts/
+web/css/
+web/js/
+
